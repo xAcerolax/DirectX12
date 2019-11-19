@@ -9,15 +9,25 @@ class Device :
 	public Obj
 {
 public:
-	Device();
+	
 	~Device();
 
+	static Device& Get()
+	{
+		static Device instance;
+		return instance;
+	}
+
 	//デバイスの取得
-	ID3D12Device* Get()const
+	ID3D12Device* Dev()const
 	{
 		return device;
 	}
 private:
+	Device();
+	Device(const Device&) = delete;
+	void operator=(const Device&) = delete;
+
 	//デバイスの生成
 	HRESULT CreateDevice();
 

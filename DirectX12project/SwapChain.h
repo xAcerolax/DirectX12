@@ -20,7 +20,7 @@ public:
 	}
 
 	// バックバッファの数取得
-	UINT GetBack() const
+	unsigned int GetBack() const
 	{
 		return bufferCnt;
 	}
@@ -32,7 +32,7 @@ private:
 
 	IDXGIFactory4* factory;	//ファクトリー
 	IDXGISwapChain3* swap;	//スワップチェイン
-	UINT bufferCnt;			//バックバッファ数
+	unsigned int bufferCnt;			//バックバッファ数
 
 	std::shared_ptr<Window> window;
 	std::shared_ptr<CommandMng> command;
