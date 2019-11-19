@@ -123,25 +123,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandMng.h" />
+    <ClInclude Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.h" />
+    <ClInclude Include="Allocator.h" />
     <ClInclude Include="Deccriptor.h" />
     <ClInclude Include="Device.h" />
+    <ClInclude Include="Func.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="Obj.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Render.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RootSignature.h" />
     <ClInclude Include="SwapChain.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CommandMng.cpp" />
+    <ClCompile Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.cpp" />
+    <ClCompile Include="Allocator.cpp" />
     <ClCompile Include="Deccriptor.cpp" />
     <ClCompile Include="Device.cpp" />
+    <ClCompile Include="Func.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Obj.cpp" />
+    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Render.cpp" />
+    <ClCompile Include="resource.cpp" />
+    <ClCompile Include="RootSignature.cpp" />
     <ClCompile Include="SwapChain.cpp" />
-    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

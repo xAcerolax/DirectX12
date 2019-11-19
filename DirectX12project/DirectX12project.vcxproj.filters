@@ -13,69 +13,123 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\Command">
-      <UniqueIdentifier>{fb1a86ec-9e47-4645-adf0-194b83dc943a}</UniqueIdentifier>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{e0707c57-168e-47b4-a49e-521c7c03eead}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Command">
-      <UniqueIdentifier>{c8f5f5a2-9f2a-4818-ba65-42e940d99f0a}</UniqueIdentifier>
+    <Filter Include="Graphics\Descriptor">
+      <UniqueIdentifier>{1bd971e1-0abf-4e25-9459-30c69c094d26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Device">
+    <Filter Include="Vevtor">
+      <UniqueIdentifier>{e0eed66a-79a8-4239-b7f2-161c2cae2574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Allocator">
+      <UniqueIdentifier>{cbd1b5f4-58a7-41d3-8b37-6cd6dec23541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Device">
       <UniqueIdentifier>{d35496eb-2c89-4d5c-9ca2-8dfb676ccf1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\List">
+      <UniqueIdentifier>{b08764f7-5edf-47db-9e83-94dace1786f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Render">
+      <UniqueIdentifier>{490eeb02-71a4-4c99-9b91-63c252b2c7ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Queue">
+      <UniqueIdentifier>{a7156821-17ab-4cc4-88d8-442cd8ef6bf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\SwapChain">
+      <UniqueIdentifier>{0197e046-18d1-433b-bc7c-76b41f85f1ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{ec0f9136-988f-4061-b659-8dd53853253e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RootSignature">
+      <UniqueIdentifier>{3d9acfb0-45fa-495a-b983-923bc771a3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Func">
+      <UniqueIdentifier>{7395d924-07cc-46c6-bc27-5c6784681161}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Obj.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Command.h">
-      <Filter>ヘッダー ファイル\Command</Filter>
-    </ClInclude>
-    <ClInclude Include="CommandMng.h">
-      <Filter>ヘッダー ファイル\Command</Filter>
+    <ClInclude Include="Device.h">
+      <Filter>Graphics\Device</Filter>
     </ClInclude>
     <ClInclude Include="SwapChain.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Device.h">
-      <Filter>Device</Filter>
+      <Filter>Graphics\SwapChain</Filter>
     </ClInclude>
     <ClInclude Include="Deccriptor.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Graphics\Descriptor</Filter>
     </ClInclude>
     <ClInclude Include="Render.h">
+      <Filter>Graphics\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Graphics\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>Graphics\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Graphics\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Vevtor</Filter>
+    </ClInclude>
+    <ClInclude Include="RootSignature.h">
+      <Filter>Graphics\RootSignature</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Func.h">
+      <Filter>Func</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp">
+    <ClCompile Include="Obj.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>Graphics\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapChain.cpp">
+      <Filter>Graphics\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Deccriptor.cpp">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Graphics\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
+      <Filter>Graphics\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator.cpp">
+      <Filter>Graphics\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Queue.cpp">
+      <Filter>Graphics\Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="RootSignature.cpp">
+      <Filter>Graphics\RootSignature</Filter>
+    </ClCompile>
+    <ClCompile Include="resource.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Obj.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>ソース ファイル\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="CommandMng.cpp">
-      <Filter>ソース ファイル\Command</Filter>
-    </ClCompile>
-    <ClCompile Include="SwapChain.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Device.cpp">
-      <Filter>Device</Filter>
-    </ClCompile>
-    <ClCompile Include="Deccriptor.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Render.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Func.cpp">
+      <Filter>Func</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

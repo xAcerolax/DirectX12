@@ -6,7 +6,7 @@
 struct ID3D12DescriptorHeap;
 struct ID3D12Resource;
 
-class CommandMng;
+class List;
 class SwapChain;
 
 class Render
@@ -17,7 +17,7 @@ class Render
 	~Render();
 
 	//画面のクリア
-	void Clear(std::weak_ptr<CommandMng>command, ID3D12DescriptorHeap* depth = nullptr);
+	void Clear(std::weak_ptr<List>list, ID3D12DescriptorHeap* depth = nullptr);
 
 	//リソースの取得
 	ID3D12Resource* Get(void) const;

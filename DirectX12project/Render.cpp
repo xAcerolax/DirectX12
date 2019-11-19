@@ -2,7 +2,7 @@
 #include "Deccriptor.h"
 #include "SwapChain.h"
 #include "Device.h"
-#include "CommandMng.h"
+#include "List.h"
 #include <d3d12.h>
 #include <crtdbg.h>
 #include <dxgi1_6.h>
@@ -47,7 +47,7 @@ void Render::CreateRsc(void)
 }
 
 //画面クリア
-void Render::Clear(std::weak_ptr<CommandMng> command, ID3D12DescriptorHeap* depth)
+void Render::Clear(std::weak_ptr<List> list, ID3D12DescriptorHeap* depth)
 {
 	auto rtv = heap->GetCPUDescriptorHandleForHeapStart();
 	rtv.ptr += Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type)
@@ -60,9 +60,8 @@ void Render::Clear(std::weak_ptr<CommandMng> command, ID3D12DescriptorHeap* dept
 		(*dsv) = depth->GetCPUDescriptorHandleForHeapStart();
 	}
 
-	/*command.lock()->Get()->OMSetRenderTargets(1, &rtv, false, &(*dsv));
-
-	command.lock()->Get()->ClearRenderTargetView(rtv, color, 0, nullptr);*/
+	list.lock()->Get()->OMSetRenderTargets(1, &rtv, false, &(*dsv));
+	list.lock()->Get()->ClearRenderTargetView(rtv, color, 0, nullptr);
 }
 
 //リソースの取得
