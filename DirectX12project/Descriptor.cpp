@@ -1,4 +1,4 @@
-#include "Deccriptor.h"
+#include "Descriptor.h"
 #include "Device.h"
 #include <d3d12.h>
 #include <crtdbg.h>
@@ -8,6 +8,7 @@
 void create::CreateHeap(ID3D12DescriptorHeap** heap, const D3D12_DESCRIPTOR_HEAP_TYPE& type, const D3D12_DESCRIPTOR_HEAP_FLAGS& flag, const size_t& num)
 {
 	D3D12_DESCRIPTOR_HEAP_DESC desc{};
+
 	desc.Flags			= flag;
 	//ヒープ内の記述子の数
 	desc.NumDescriptors = unsigned int(num);
@@ -19,7 +20,8 @@ void create::CreateHeap(ID3D12DescriptorHeap** heap, const D3D12_DESCRIPTOR_HEAP
 }
 
 //リソース生成
-void create::CreateRsc(ID3D12Resource** rsc, const D3D12_HEAP_PROPERTIES& prop, const D3D12_RESOURCE_DESC& desc, const D3D12_CLEAR_VALUE* clear, const D3D12_RESOURCE_STATES& state, const D3D12_HEAP_FLAGS& flag)
+void create::CreateRsc(ID3D12Resource** rsc, const D3D12_HEAP_PROPERTIES& prop, const D3D12_RESOURCE_DESC& desc, const D3D12_CLEAR_VALUE* clear,
+					   const D3D12_RESOURCE_STATES& state, const D3D12_HEAP_FLAGS& flag)
 {
 	auto hr = Device::Get().Dev()->CreateCommittedResource(&prop, flag, &desc, state, clear, IID_PPV_ARGS(&(*rsc)));
 	_ASSERT(hr == S_OK);

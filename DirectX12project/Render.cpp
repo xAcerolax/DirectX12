@@ -1,5 +1,5 @@
 #include "Render.h"
-#include "Deccriptor.h"
+#include "Descriptor.h"
 #include "SwapChain.h"
 #include "Device.h"
 #include "List.h"
@@ -52,6 +52,7 @@ void Render::Clear(std::weak_ptr<List> list, ID3D12DescriptorHeap* depth)
 	auto rtv = heap->GetCPUDescriptorHandleForHeapStart();
 	rtv.ptr += Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type)
 		* swap.lock()->Get()->GetCurrentBackBufferIndex();
+
 	std::unique_ptr<D3D12_CPU_DESCRIPTOR_HANDLE> dsv = nullptr;
 
 	if (depth != nullptr)

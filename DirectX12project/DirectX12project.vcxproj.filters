@@ -49,19 +49,16 @@
     <Filter Include="Func">
       <UniqueIdentifier>{7395d924-07cc-46c6-bc27-5c6784681161}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Pipeline">
+      <UniqueIdentifier>{28eace71-1da9-41b0-bb0e-837617160834}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Obj.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Device.h">
       <Filter>Graphics\Device</Filter>
     </ClInclude>
     <ClInclude Include="SwapChain.h">
       <Filter>Graphics\SwapChain</Filter>
-    </ClInclude>
-    <ClInclude Include="Deccriptor.h">
-      <Filter>Graphics\Descriptor</Filter>
     </ClInclude>
     <ClInclude Include="Render.h">
       <Filter>Graphics\Render</Filter>
@@ -84,25 +81,25 @@
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.h">
-      <Filter>Window</Filter>
-    </ClInclude>
     <ClInclude Include="Func.h">
       <Filter>Func</Filter>
     </ClInclude>
+    <ClInclude Include="Descriptor.h">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Pipeline.h">
+      <Filter>Graphics\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Obj.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Device.cpp">
       <Filter>Graphics\Device</Filter>
     </ClCompile>
     <ClCompile Include="SwapChain.cpp">
       <Filter>Graphics\SwapChain</Filter>
-    </ClCompile>
-    <ClCompile Include="Deccriptor.cpp">
-      <Filter>Graphics\Descriptor</Filter>
     </ClCompile>
     <ClCompile Include="Render.cpp">
       <Filter>Graphics\Render</Filter>
@@ -125,11 +122,17 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\DirectX12project\DirectX12project\DirectX12project\Window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
     <ClCompile Include="Func.cpp">
       <Filter>Func</Filter>
+    </ClCompile>
+    <ClCompile Include="Descriptor.cpp">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Pipeline.cpp">
+      <Filter>Graphics\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

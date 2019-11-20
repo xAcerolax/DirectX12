@@ -5,7 +5,6 @@
 
 struct ID3D12DescriptorHeap;
 struct ID3D12Resource;
-
 class List;
 class SwapChain;
 

@@ -1,5 +1,4 @@
 #pragma once
-#include "Obj.h"
 
 //‘O•ûéŒ¾
 enum D3D12_DESCRIPTOR_HEAP_TYPE : int;

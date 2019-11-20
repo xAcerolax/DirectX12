@@ -21,15 +21,15 @@ namespace create
 	template <typename T>
 	T Angle(const T& rad);
 
-	// ランダム
-	int Random(const int& min, const int& max);
+	//// ランダム
+	//int Random(const int& min, const int& max);
 
-	// ランダム
-	template <typename T>
-	T Random(const T& min, const T& max);
-	template<typename T>
-	T Random(const T& min, const T& max)
-	{
-		return T();
-	}
+	//// ランダム
+	//template <typename T>
+	//T Random(const T& min, const T& max);
+	//template<typename T>
+	//T Random(const T& min, const T& max)
+	//{
+	//	return T();
+	//}
 }

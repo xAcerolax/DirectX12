@@ -55,34 +55,34 @@ template float create::Angle(const float&);
 template double create::Angle(const double&);
 
 
-// ランダム
-int create::Random(const int& min, const int& max)
-{
-	std::random_device dev;
-#ifdef _WIN64
-	std::mt19937_64 mt(dev());
-#else
-	std::mt19937 mt(dev());
-#endif
-	std::uniform_int_distribution<int>dist(min, max);
-
-	return dist(mt);
-}
-
-
-// ランダム
-template <typename T>
-T create::Random(const T& min, const T& max)
-{
-	std::random_device dev;
-#ifdef _WIN64
-	std::mt19937_64 mt(dev());
-#else
-	std::mt19937 mt(dev());
-#endif
-	std::uniform_real_distribution<T>dist(min, max);
-
-	return dist(mt);
-}
-template float create::Random(const float&, const float&);
-template double create::Random(const double&, const double&);
+//// ランダム
+//int create::Random(const int& min, const int& max)
+//{
+//	std::random_device dev;
+//#ifdef _WIN64
+//	std::mt19937_64 mt(dev());
+//#else
+//	std::mt19937 mt(dev());
+//#endif
+//	std::uniform_int_distribution<int>dist(min, max);
+//
+//	return dist(mt);
+//}
+//
+//
+//// ランダム
+//template <typename T>
+//T create::Random(const T& min, const T& max)
+//{
+//	std::random_device dev;
+//#ifdef _WIN64
+//	std::mt19937_64 mt(dev());
+//#else
+//	std::mt19937 mt(dev());
+//#endif
+//	std::uniform_real_distribution<T>dist(min, max);
+//
+//	return dist(mt);
+//}
+//template float create::Random(const float&, const float&);
+//template double create::Random(const double&, const double&);
