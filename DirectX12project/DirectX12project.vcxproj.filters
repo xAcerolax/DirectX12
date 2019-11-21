@@ -58,6 +58,12 @@
     <Filter Include="Graphics\RootSignature">
       <UniqueIdentifier>{3d9acfb0-45fa-495a-b983-923bc771a3be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainLib">
+      <UniqueIdentifier>{0e88d2c4-e6ef-41f0-b340-dcec311e320d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{1178f64b-ad25-4aa3-8d5c-e97f123539f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Device.h">
@@ -111,6 +117,12 @@
     <ClInclude Include="Vector3.h">
       <Filter>Vevtor</Filter>
     </ClInclude>
+    <ClInclude Include="MainLib.h">
+      <Filter>MainLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device.cpp">
@@ -160,6 +172,12 @@
     </ClCompile>
     <ClCompile Include="Primitive.cpp">
       <Filter>Graphics\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLib.cpp">
+      <Filter>MainLib</Filter>
+    </ClCompile>
+    <ClCompile Include="Manger.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

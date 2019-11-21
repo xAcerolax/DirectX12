@@ -58,6 +58,7 @@ public:
 	// 描画
 	void Draw(void);
 
+
 private:
 	// 頂点リソース生成
 	void CreateVRsc(void);

@@ -70,7 +70,7 @@ void create::ShaderLoad(const std::string& fileName, ID3DBlob** blob)
 // ÉäÉ\Å[ÉXì«Ç›çûÇ›
 void create::ShaderRead(const int& id, ID3DBlob** blob)
 {
-	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), (LPCSTR)L"Shader");
+	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), L"Shader");
 	_ASSERT(rsc != nullptr);
 
 	HANDLE handle = LoadResource(nullptr, rsc);

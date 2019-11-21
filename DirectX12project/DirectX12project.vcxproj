@@ -42,14 +42,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Visual Studio 2019 (v142)</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -146,6 +146,8 @@
     <ClInclude Include="Fence.h" />
     <ClInclude Include="Func.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="MainLib.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Pipeline.h" />
     <ClInclude Include="Primitive.h" />
@@ -166,6 +168,8 @@
     <ClCompile Include="Func.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainLib.cpp" />
+    <ClCompile Include="Manger.cpp" />
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Pipeline.cpp" />
     <ClCompile Include="Primitive.cpp" />
