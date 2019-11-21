@@ -43,14 +43,20 @@
     <Filter Include="Window">
       <UniqueIdentifier>{ec0f9136-988f-4061-b659-8dd53853253e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\RootSignature">
-      <UniqueIdentifier>{3d9acfb0-45fa-495a-b983-923bc771a3be}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Func">
       <UniqueIdentifier>{7395d924-07cc-46c6-bc27-5c6784681161}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics\Pipeline">
       <UniqueIdentifier>{28eace71-1da9-41b0-bb0e-837617160834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Fence">
+      <UniqueIdentifier>{1b1c52e3-6a46-4561-aead-a9d5ef1645d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Primitive">
+      <UniqueIdentifier>{4f0e2491-4170-4931-ada7-feaa95588d85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RootSignature">
+      <UniqueIdentifier>{3d9acfb0-45fa-495a-b983-923bc771a3be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +102,15 @@
     <ClInclude Include="Obj.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Fence.h">
+      <Filter>Graphics\Fence</Filter>
+    </ClInclude>
+    <ClInclude Include="Primitive.h">
+      <Filter>Graphics\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>Vevtor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device.cpp">
@@ -115,9 +130,6 @@
     </ClCompile>
     <ClCompile Include="Queue.cpp">
       <Filter>Graphics\Queue</Filter>
-    </ClCompile>
-    <ClCompile Include="RootSignature.cpp">
-      <Filter>Graphics\RootSignature</Filter>
     </ClCompile>
     <ClCompile Include="resource.cpp">
       <Filter>ソース ファイル</Filter>
@@ -139,6 +151,15 @@
     </ClCompile>
     <ClCompile Include="Obj.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="RootSignature.cpp">
+      <Filter>Graphics\RootSignature</Filter>
+    </ClCompile>
+    <ClCompile Include="Fence.cpp">
+      <Filter>Graphics\Fence</Filter>
+    </ClCompile>
+    <ClCompile Include="Primitive.cpp">
+      <Filter>Graphics\Primitive</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

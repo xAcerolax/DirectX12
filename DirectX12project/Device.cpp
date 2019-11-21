@@ -1,10 +1,9 @@
 #include "Device.h"
 #include <d3d12.h>
 #pragma comment(lib, "d3d12.lib")
-#include <crtdbg.h>
 #include <dxgi1_6.h>
 #pragma comment(lib, "dxgi.lib")
-
+#include <crtdbg.h>
 // ‹@”\ƒŒƒxƒ‹ˆê——
 const D3D_FEATURE_LEVEL level[] = {
 	D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_12_1,

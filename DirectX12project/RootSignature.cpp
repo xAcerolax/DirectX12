@@ -9,7 +9,7 @@
 #include <functional>
 #include <unordered_map>
 #include <dxcapi.h>
-
+#pragma comment(lib, "dxcompiler.lib")
 
 // シェーダコンパイル
 void create::ShaderCompile(const std::string& fileName, const std::string& func, const std::string& ver, ID3DBlob** blob)
@@ -70,7 +70,7 @@ void create::ShaderLoad(const std::string& fileName, ID3DBlob** blob)
 // リソース読み込み
 void create::ShaderRead(const int& id, ID3DBlob** blob)
 {
-	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), "Shader");
+	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), (LPCSTR)L"Shader");
 	_ASSERT(rsc != nullptr);
 
 	HANDLE handle = LoadResource(nullptr, rsc);
