@@ -10,6 +10,7 @@ class SwapChain;
 
 class Render
 {
+public:
 	//コンストラクタ
 	Render(std::weak_ptr<SwapChain>swap);
 	//デストラクタ
@@ -34,7 +35,7 @@ private:
 	//ヒープ
 	Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> heap;
 
-	//リソース
-	std::vector<Microsoft::WRL::ComPtr<ID3D12Resource>> rsc;
+	// リソース
+	std::vector<Microsoft::WRL::ComPtr<ID3D12Resource>>rsc;
 };
 

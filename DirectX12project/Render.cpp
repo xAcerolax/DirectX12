@@ -1,8 +1,8 @@
 #include "Render.h"
-#include "Descriptor.h"
-#include "SwapChain.h"
 #include "Device.h"
 #include "List.h"
+#include "SwapChain.h"
+#include "Descriptor.h"
 #include <d3d12.h>
 #include <crtdbg.h>
 #include <dxgi1_6.h>
@@ -19,7 +19,8 @@ const float color[] = {
 Render::Render(std::weak_ptr<SwapChain>swap) :
 	swap(swap), heap(nullptr)
 {
-
+	CreateHeap();
+	CreateRsc();
 }
 
 //デストラクタ
@@ -51,7 +52,7 @@ void Render::Clear(std::weak_ptr<List> list, ID3D12DescriptorHeap* depth)
 {
 	auto rtv = heap->GetCPUDescriptorHandleForHeapStart();
 	rtv.ptr += Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type)
-		* swap.lock()->Get()->GetCurrentBackBufferIndex();
+				* swap.lock()->Get()->GetCurrentBackBufferIndex();
 
 	std::unique_ptr<D3D12_CPU_DESCRIPTOR_HANDLE> dsv = nullptr;
 

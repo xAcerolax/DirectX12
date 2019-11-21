@@ -1,30 +1,36 @@
 #pragma once
-#include "d3d12.h"
+#include "Vector2.h"
 
 class Window
 {
 public:
-	Window();
+	// コンストラクタ
+	Window(const Vec2& pos, const Vec2& size, void* parent);
+	//デストラクタ
 	~Window();
 
 
-	HWND Get(void)
-	{
-		return handle;
-	}
+	// ウィンドウハンドル取得
+	void* Get(void) const;
+
 private:
-	//ウィンドウプロシージャ
-	static LRESULT WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+	// ウィンドウコールバック
+#ifdef _WIN64
+	static __int64 __stdcall WindowProc(void* hWnd, unsigned int message, unsigned __int64 wParam, __int64 lParam);
+#else
+	static long __stdcall WindowProc(void* hWnd, unsigned int message, unsigned int wParam, long lParam);
+#endif
 
-	void CreateWnd();
+	// ウィンドウ生成
+	void CreateWnd(const Vec2& pos, const Vec2& size, void* parent);
 
-	WNDCLASSEX window;
-	//ウィンドウサイズ格納用
-	RECT rect;
-	//ウィンドウハンドル
-	HWND handle;
 
-	int height;
-	int width;
+	// ウィンドウハンドル
+	void* handle;
+
+	// ウィンドウインスタンス
+	void* instance;
+
+	// ウィンドウ名
+	const wchar_t* name;
 };
-

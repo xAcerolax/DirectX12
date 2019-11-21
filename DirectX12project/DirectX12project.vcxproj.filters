@@ -123,6 +123,9 @@
     <ClInclude Include="Manager.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Single.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device.cpp">
@@ -176,7 +179,7 @@
     <ClCompile Include="MainLib.cpp">
       <Filter>MainLib</Filter>
     </ClCompile>
-    <ClCompile Include="Manger.cpp">
+    <ClCompile Include="Manager_class.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
   </ItemGroup>

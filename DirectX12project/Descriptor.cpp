@@ -44,3 +44,18 @@ void create::RTV(ID3D12Resource* rsc, ID3D12DescriptorHeap* heap, const size_t& 
 
 	Device::Get().Dev()->CreateRenderTargetView(rsc, &desc, handle);
 }
+
+// マップ
+void create::Map(ID3D12Resource* rsc, void** data)
+{
+	D3D12_RANGE range{ 0, 1 };
+	auto hr = rsc->Map(0, &range, *(&data));
+	_ASSERT(hr == S_OK);
+}
+
+// アンマップ
+void create::UnMap(ID3D12Resource* rsc)
+{
+	D3D12_RANGE range{ 0, 1 };
+	rsc->Unmap(0, &range);
+}

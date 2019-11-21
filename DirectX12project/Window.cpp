@@ -1,71 +1,86 @@
 #include "Window.h"
+#include "resource.h"
 #include <tchar.h>
+#include <crtdbg.h>
+#include <Windows.h>
 
-
-Window::Window()
+// コンストラクタ
+Window::Window(const Vec2& pos, const Vec2& size, void* parent) :
+	handle(nullptr), instance(nullptr)
 {
-	CreateWnd();
+	CreateWnd(pos, size, parent);
 }
 
-
+// デストラクタ
 Window::~Window()
 {
-	//ウィンドウを開放
-	UnregisterClass(window.lpszClassName, window.hInstance);
+	DestroyWindow(HWND(handle));
+	UnregisterClass(name, HINSTANCE(instance));
 }
 
-LRESULT Window::WindowProcedure(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+// ウィンドウコールバック
+#ifdef _WIN64
+__int64 __stdcall Window::WindowProc(void* hWnd, unsigned int message, unsigned __int64 wParam, __int64 lParam)
+#else
+long __stdcall Window::WindowProc(void* hWnd, unsigned int message, unsigned int wParam, long lParam)
+#endif
 {
-	//ウィンドウが破棄されたとき
-	if (msg == WM_DESTROY)
+	switch (message)
 	{
-		//OSに対してアプリケーション終了を伝える
+	case WM_MOUSEWHEEL:
+		break;
+	case WM_DESTROY:
+		if (GetParent(HWND(hWnd)) != nullptr)
+		{
+			break;
+		}
 		PostQuitMessage(0);
 		return 0;
+	case WM_DROPFILES:
+		//ウィンドウをアクティブにする
+		SetForegroundWindow(HWND(hWnd));
+		break;
+	default:
+		break;
 	}
 
-	return DefWindowProc(hwnd, msg, wparam, lparam);
+	return DefWindowProc(HWND(hWnd), message, wParam, lParam);
 }
 
-void Window::CreateWnd(void)
+void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 {
-	window.cbClsExtra = 0;								//追加領域
-	window.cbWndExtra = 0;								//;;
-	window.cbSize = sizeof(WNDCLASSEX);					//WNDCLASSEXのサイズ指定
-	window.hbrBackground = CreateSolidBrush(0x000000);  //ウィンドウの背景色を指定
-	window.hCursor = LoadCursor(NULL, IDC_ARROW);		//マウスカーソル指定
-	window.hIcon = LoadIcon(NULL, IDI_APPLICATION);		//アイコンの指定
-	window.hIconSm = LoadIcon(NULL, IDI_APPLICATION);	//アイコンの指定
-	window.hInstance = GetModuleHandle(0);				//インスタンスハンドルの指定
-	window.lpfnWndProc = (WNDPROC)WindowProcedure;		//ウィンドウプロシージャの指定
-	window.lpszClassName = _T("DirectX12");				//ウィンドウの名前を指定
-	window.lpszMenuName = _T("DirectX12");				//ウィンドウメニューの名前を指定
-	window.style = CS_HREDRAW | CS_VREDRAW;				//ウィンドウの書き直しを指定
-	RegisterClassEx(&window);							//ウィンドウの登録
+	WNDCLASSEX wnd{};
+	wnd.cbSize = sizeof(WNDCLASSEX);
+	wnd.hbrBackground = CreateSolidBrush(COLOR_APPWORKSPACE);
+	wnd.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wnd.hIcon = LoadIcon(GetModuleHandle(0), MAKEINTRESOURCE(AVICII));
+	wnd.hIconSm = LoadIcon(GetModuleHandle(0), MAKEINTRESOURCE(AVICII));
+	wnd.hInstance = GetModuleHandle(0);
+	wnd.lpfnWndProc = WNDPROC(WindowProc);
+	wnd.lpszClassName = _T("おかもん");
+	wnd.lpszMenuName = _T("おかもん");
+	wnd.style = CS_HREDRAW | CS_VREDRAW;
+	RegisterClassEx(&wnd);
 
-	//ウィンドウサイズ : 縦幅:480 横幅:640
-	rect.bottom = 480;
-	rect.left = 0;
-	rect.right = 640;
-	rect.top = 0;
+	auto flag = (parent == nullptr) ? (WS_OVERLAPPEDWINDOW) : (WS_OVERLAPPEDWINDOW | WS_POPUP);
 
-	width = (rect.right - rect.left);
-	height = (rect.bottom - rect.top);
+	RECT rect{};
+	rect.bottom = static_cast<long>(size.y);
+	rect.right = static_cast<long>(size.x);
+	AdjustWindowRect(&rect, flag, false);
 
-	//サイズの補正
-	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+	handle = CreateWindowEx(WS_EX_ACCEPTFILES, wnd.lpszClassName, _T("おかもん"), flag, pos.x, pos.y,
+		(rect.right - rect.left), (rect.bottom - rect.top), HWND(parent), nullptr, wnd.hInstance, nullptr);
+	_ASSERT(handle != nullptr);
 
-	//ウィンドウ生成
-	handle = CreateWindow(window.lpszClassName,
-		_T("DirectX12"),
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT,
-		CW_USEDEFAULT,
-		(width),
-		(height),
-		nullptr,
-		nullptr,
-		window.hInstance,
-		nullptr);
+	instance = wnd.hInstance;
+	name = wnd.lpszClassName;
 
+	ShowWindow(reinterpret_cast<HWND>(handle), SW_SHOW);
+}
+
+// ウィンドウハンドル取得
+void* Window::Get(void) const
+{
+	return handle;
 }

@@ -4,6 +4,9 @@
 #include <crtdbg.h>
 #include <dxgi1_6.h>
 
+
+unsigned int SwapChain::bufferCnt = 3;
+
 // コンストラクタ
 SwapChain::SwapChain(std::weak_ptr<Window>win, std::weak_ptr<Queue>queue) :
 	window(window), queue(queue), swap(nullptr)
@@ -19,8 +22,6 @@ SwapChain::~SwapChain()
 // スワップチェインの生成
 void SwapChain::CreateSwap(void)
 {
-	bufferCnt = 3;
-
 	Microsoft::WRL::ComPtr<IDXGIFactory7>factory = nullptr;
 	auto hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
 	_ASSERT(hr == S_OK);

@@ -24,6 +24,8 @@ public:
 		return bufferCnt;
 	}
 
+	//バックバッファ数
+	static unsigned int bufferCnt;
 
 private:
 	// スワップチェインの生成
@@ -34,8 +36,5 @@ private:
 
 	// スワップチェイン
 	Microsoft::WRL::ComPtr<IDXGISwapChain4>swap;
-
-	//バックバッファ数
-	unsigned int bufferCnt;
 };
 

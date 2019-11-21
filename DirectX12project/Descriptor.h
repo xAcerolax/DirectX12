@@ -23,5 +23,9 @@ namespace create
 	// RTV生成
 	void RTV(ID3D12Resource* rsc, ID3D12DescriptorHeap* heap, const size_t& index = 0);
 
-	//
+	// マップ
+	void Map(ID3D12Resource* rsc, void** data);
+
+	// アンマップ
+	void UnMap(ID3D12Resource* rsc);
 }
