@@ -6,33 +6,33 @@ struct ID3D12RootSignature;
 struct ID3D10Blob;
 typedef ID3D10Blob ID3DBlob;
 
-namespace read
+namespace create
 {
-	//シェーダコンパイル
+	// シェーダコンパイル
 	void ShaderCompile(const std::string& fileName, const std::string& func, const std::string& ver, ID3DBlob** blob);
 
-	//.cso読み込み
+	// .cso読み込み
 	void ShaderLoad(const std::string& fileName, ID3DBlob** blob);
 
-	//リソース読み込み
+	// リソース読み込み
 	void ShaderRead(const int& id, ID3DBlob** blob);
 }
 
 class RootSignature
 {
 public:
-	//コンストラクタ
+	// コンストラクタ
 	RootSignature();
-	//デストラクタ
+	// デストラクタ
 	~RootSignature();
 
-	//シェーダーコンパイル
+	// シェーダコンパイル
 	void Vertex(const std::string& fileName, const std::string& func, const std::string& ver);
 	void Geometry(const std::string& fileName, const std::string& func, const std::string& ver);
-	void Pixel (const std::string& fileName, const std::string& func, const std::string& ver);
+	void Pixel(const std::string& fileName, const std::string& func, const std::string& ver);
 	void Compute(const std::string& fileName, const std::string& func, const std::string& ver);
 
-	//.cso読み込み
+	// .cso読み込み
 	void Vertex(const std::string& fileName);
 	void Geometry(const std::string& fileName);
 	void Pixel(const std::string& fileName);
@@ -58,7 +58,6 @@ public:
 
 	// コンピュートシェーダ情報取得
 	ID3DBlob* GetCompute(void) const;
-
 
 private:
 	// ルートシグネチャ生成

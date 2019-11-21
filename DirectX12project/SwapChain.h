@@ -2,10 +2,9 @@
 #include <wrl.h>
 #include <memory>
 
-struct IDXGISwapChain4;
 class Window;
 class Queue;
-
+struct IDXGISwapChain4;
 
 class SwapChain 
 {
@@ -32,7 +31,9 @@ private:
 	
 	std::weak_ptr<Window> window;					//ウィンドウ
 	std::weak_ptr<Queue> queue;						//キュー
-	Microsoft::WRL::ComPtr<IDXGISwapChain4>swap;	// スワップチェイン
+
+	// スワップチェイン
+	Microsoft::WRL::ComPtr<IDXGISwapChain4>swap;
 
 	//バックバッファ数
 	unsigned int bufferCnt;

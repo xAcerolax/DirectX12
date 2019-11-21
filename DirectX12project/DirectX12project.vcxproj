@@ -128,6 +128,7 @@
     <ClInclude Include="Device.h" />
     <ClInclude Include="Func.h" />
     <ClInclude Include="List.h" />
+    <ClInclude Include="Obj.h" />
     <ClInclude Include="Pipeline.h" />
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Render.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Func.cpp" />
     <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Obj.cpp" />
     <ClCompile Include="Pipeline.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Render.cpp" />

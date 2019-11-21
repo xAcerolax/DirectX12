@@ -2,30 +2,21 @@
 #include "Device.h"
 #include "Func.h"
 #include <d3dcompiler.h>
+#pragma comment(lib, "d3dcompiler.lib")
 #include <d3d12.h>
+#pragma comment(lib, "d3d12.lib")
 #include <crtdbg.h>
 #include <functional>
 #include <unordered_map>
 #include <dxcapi.h>
 
-//コンストラクタ
-RootSignature::RootSignature() :
-	root(nullptr), vertex(nullptr), geometry(nullptr), pixel(pixel), compute(nullptr)
-{
-}
 
-//デストラクタ
-RootSignature::~RootSignature()
-{
-}
-
-//シェーダーコンパイル
-void read::ShaderCompile(const std::string& fileName, const std::string& func, const std::string& ver, ID3DBlob** blob)
+// シェーダコンパイル
+void create::ShaderCompile(const std::string& fileName, const std::string& func, const std::string& ver, ID3DBlob** blob)
 {
 	auto path = create::ChangeCode(fileName);
 	auto entry = create::ChangeCode(func);
 	auto model = create::ChangeCode(ver);
-
 
 	Microsoft::WRL::ComPtr<IDxcLibrary>library = nullptr;
 	auto hr = DxcCreateInstance(CLSID_DxcLibrary, IID_PPV_ARGS(&library));
@@ -43,15 +34,11 @@ void read::ShaderCompile(const std::string& fileName, const std::string& func, c
 	Microsoft::WRL::ComPtr<IDxcCompiler>compiler = nullptr;
 	hr = DxcCreateInstance(CLSID_DxcCompiler, IID_PPV_ARGS(&compiler));
 	_ASSERT(hr == S_OK);
-
 	Microsoft::WRL::ComPtr<IDxcOperationResult>result = nullptr;
 	hr = compiler->Compile(encode.Get(), path.c_str(), entry.c_str(), model.c_str(), arg, _countof(arg), nullptr, 0, handler.Get(), &result);
 	_ASSERT(hr == S_OK);
 
-
 	result->GetStatus(&hr);
-
-
 	if (SUCCEEDED(hr))
 	{
 		hr = result->GetResult((IDxcBlob**) & (*blob));
@@ -59,8 +46,8 @@ void read::ShaderCompile(const std::string& fileName, const std::string& func, c
 	}
 	else
 	{
-		Microsoft::WRL::ComPtr<IDxcBlobEncoding> print = nullptr;
-		Microsoft::WRL::ComPtr<IDxcBlobEncoding> print16 = nullptr;
+		Microsoft::WRL::ComPtr<IDxcBlobEncoding>print = nullptr;
+		Microsoft::WRL::ComPtr<IDxcBlobEncoding>print16 = nullptr;
 
 		hr = result->GetErrorBuffer(&print);
 		_ASSERT(hr == S_OK);
@@ -72,19 +59,20 @@ void read::ShaderCompile(const std::string& fileName, const std::string& func, c
 	}
 }
 
-//.cso読み込み
-void read::ShaderLoad(const std::string& fileName, ID3DBlob** blob)
+// .cso読み込み
+void create::ShaderLoad(const std::string& fileName, ID3DBlob** blob)
 {
 	auto path = create::ChangeCode(fileName);
 	auto hr = D3DReadFileToBlob(path.c_str(), blob);
 	_ASSERT(hr == S_OK);
 }
 
-//リソース読み込み
-void read::ShaderRead(const int& id, ID3DBlob** blob)
+// リソース読み込み
+void create::ShaderRead(const int& id, ID3DBlob** blob)
 {
-	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), (LPCSTR)L"Shader");
+	HRSRC rsc = FindResource(nullptr, MAKEINTRESOURCE(id), "Shader");
 	_ASSERT(rsc != nullptr);
+
 	HANDLE handle = LoadResource(nullptr, rsc);
 	_ASSERT(handle != nullptr);
 
@@ -95,7 +83,18 @@ void read::ShaderRead(const int& id, ID3DBlob** blob)
 	_ASSERT(hr == S_OK);
 }
 
-//ルートシグネチャ生成
+// コンストラクタ
+RootSignature::RootSignature() :
+	root(nullptr), vertex(nullptr), geometry(nullptr), pixel(nullptr), compute(nullptr)
+{
+}
+
+// デストラクタ
+RootSignature::~RootSignature()
+{
+}
+
+// ルートシグネチャ生成
 void RootSignature::CreateRoot(ID3DBlob* blob)
 {
 	Microsoft::WRL::ComPtr<ID3DBlob>sig = nullptr;
@@ -106,128 +105,109 @@ void RootSignature::CreateRoot(ID3DBlob* blob)
 	_ASSERT(hr == S_OK);
 }
 
-
-//--------------------------------------------
-//	コンパイル
-//--------------------------------------------
-
-//頂点シェーダ
+// 頂点シェーダコンパイル
 void RootSignature::Vertex(const std::string& fileName, const std::string& func, const std::string& ver)
 {
-	read::ShaderCompile(fileName, func, ver, &vertex);
+	create::ShaderCompile(fileName, func, ver, &vertex);
 	CreateRoot(vertex.Get());
 }
 
-//ジオメトリシェーダ
+// ジオメトリーシェーダコンパイル
 void RootSignature::Geometry(const std::string& fileName, const std::string& func, const std::string& ver)
 {
-	read::ShaderCompile(fileName, func, ver, &geometry);
+	create::ShaderCompile(fileName, func, ver, &geometry);
 }
 
-//ピクセルシェーダ
+// ピクセルシェーダコンパイル
 void RootSignature::Pixel(const std::string& fileName, const std::string& func, const std::string& ver)
 {
-	read::ShaderCompile(fileName, func, ver, &pixel);
+	create::ShaderCompile(fileName, func, ver, &pixel);
 }
 
-//コンピュートシェーダ
+// コンピュートシェーダコンパイル
 void RootSignature::Compute(const std::string& fileName, const std::string& func, const std::string& ver)
 {
-	read::ShaderCompile(fileName, func, ver, &compute);
+	create::ShaderCompile(fileName, func, ver, &compute);
 	CreateRoot(compute.Get());
 }
 
-
-//--------------------------------------------
-//	.csoの読み込み
-//--------------------------------------------
-
-//頂点シェーダの.cso読み込み
+// 頂点シェーダの.cso読み込み
 void RootSignature::Vertex(const std::string& fileName)
 {
-	read::ShaderLoad(fileName, &vertex);
+	create::ShaderLoad(fileName, &vertex);
 	CreateRoot(vertex.Get());
 }
 
-//ジオメトリシェーダの.cso読み込み
+// ジオメトリシェーダの.cso読み込み
 void RootSignature::Geometry(const std::string& fileName)
 {
-	read::ShaderLoad(fileName, &geometry);
+	create::ShaderLoad(fileName, &geometry);
 }
 
-//ピクセルシェーダの.cso読み込み
+// ピクセルシェーダの.cso読み込み
 void RootSignature::Pixel(const std::string& fileName)
 {
-	read::ShaderLoad(fileName, &pixel);
+	create::ShaderLoad(fileName, &pixel);
 }
 
-//コンピュートシェーダの.cso読み込み
+// コンピュートシェーダの.cso読み込み
 void RootSignature::Compute(const std::string& fileName)
 {
-	read::ShaderLoad(fileName, &compute);
+	create::ShaderLoad(fileName, &compute);
 	CreateRoot(compute.Get());
 }
 
-
-//--------------------------------------------
-//	リソースの読み込み
-//--------------------------------------------
-
-//頂点シェーダ
+// 頂点シェーダのリソース読み込み
 void RootSignature::Vertex(const int& id)
 {
-	read::ShaderRead(id, &vertex);
+	create::ShaderRead(id, &vertex);
 	CreateRoot(vertex.Get());
 }
 
-//ジオメトリシェーダ
+// ジオメトリシェーダのリソース読み込み
 void RootSignature::Geometry(const int& id)
 {
-	read::ShaderRead(id, &geometry);
+	create::ShaderRead(id, &geometry);
 }
 
-//ピクセルシェーダ
+// ピクセルシェーダのリソース読み込み
 void RootSignature::Pixel(const int& id)
 {
-	read::ShaderRead(id, &pixel);
+	create::ShaderRead(id, &pixel);
 }
 
-//コンピュートシェーダ
+// コンピュートシェーダのリソース読み込み
 void RootSignature::Compute(const int& id)
 {
-	read::ShaderRead(id, &compute);
+	create::ShaderRead(id, &compute);
 	CreateRoot(compute.Get());
 }
 
-
-//--------------------------------------------
-//	情報取得
-//--------------------------------------------
-
+// ルートシグネチャ取得
 ID3D12RootSignature* RootSignature::Get(void) const
 {
 	return root.Get();
 }
 
-//頂点シェーダ
+// 頂点シェーダ情報取得
 ID3DBlob* RootSignature::GetVertex(void) const
 {
 	return vertex.Get();
 }
 
-// ジオメトリシェーダ
+// ジオメトリシェーダ情報取得
 ID3DBlob* RootSignature::GetGeometry(void) const
 {
 	return geometry.Get();
 }
 
-// ピクセルシェーダ
+// ピクセルシェーダ情報取得
 ID3DBlob* RootSignature::GetPixel(void) const
 {
 	return pixel.Get();
 }
 
-// コンピュートシェーダ
+// コンピュートシェーダ情報取得
 ID3DBlob* RootSignature::GetCompute(void) const
 {
 	return compute.Get();

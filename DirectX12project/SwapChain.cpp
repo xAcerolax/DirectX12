@@ -4,51 +4,44 @@
 #include <crtdbg.h>
 #include <dxgi1_6.h>
 
-
-SwapChain::SwapChain(std::weak_ptr<Window> window, std::weak_ptr<Queue> queue) :
+// コンストラクタ
+SwapChain::SwapChain(std::weak_ptr<Window>win, std::weak_ptr<Queue>queue) :
 	window(window), queue(queue), swap(nullptr)
 {
 	CreateSwap();
 }
 
+// デストラクタ
 SwapChain::~SwapChain()
 {
 }
 
-void SwapChain::CreateSwap()
+// スワップチェインの生成
+void SwapChain::CreateSwap(void)
 {
 	bufferCnt = 3;
 
 	Microsoft::WRL::ComPtr<IDXGIFactory7>factory = nullptr;
 	auto hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
-
-	//式を評価し、結果がFalseの場合はデバッグレポートを生成
-	_ASSERT(hr == S_OK);	
+	_ASSERT(hr == S_OK);
 
 	//ウィンドウサイズ
-	RECT windowSize{};
-	GetClientRect(HWND(window.lock()->Get()), &windowSize);
+	RECT winSize{};
+	GetClientRect(HWND(window.lock()->Get()), &winSize);
 
-	//スワップチェイン設定用構造体
-	DXGI_SWAP_CHAIN_DESC1 desc = {};
+	DXGI_SWAP_CHAIN_DESC1 desc{};
+	desc.AlphaMode = DXGI_ALPHA_MODE::DXGI_ALPHA_MODE_UNSPECIFIED;
+	desc.BufferCount = bufferCnt;
+	desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	desc.Format = DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM;
+	desc.Height = winSize.bottom;
+	desc.SampleDesc = { 1, 0 };
+	desc.Scaling = DXGI_SCALING::DXGI_SCALING_STRETCH;
+	desc.Stereo = false;
+	desc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;
+	desc.Width = winSize.right;
 
-	desc.AlphaMode		= DXGI_ALPHA_MODE::DXGI_ALPHA_MODE_UNSPECIFIED;
-	desc.BufferCount	= bufferCnt;
-	desc.BufferUsage	= DXGI_USAGE_RENDER_TARGET_OUTPUT;
-	desc.Flags			= 0;
-	desc.Format			= DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM;;
-	desc.Height			= windowSize.bottom;
-	desc.Width			= windowSize.right;
-	desc.SampleDesc		= { 1,0 };
-	desc.Scaling		= DXGI_SCALING::DXGI_SCALING_STRETCH;
-	desc.Stereo			= false;
-	desc.SwapEffect		= DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
-
-
-	//スワップチェインの生成
-	hr = factory->CreateSwapChainForHwnd((IUnknown*)queue.lock()->Get(), HWND(window.lock()->Get())
-		, &desc, nullptr, nullptr, (IDXGISwapChain1**)swap.GetAddressOf());
-
+	hr = factory->CreateSwapChainForHwnd((IUnknown*)queue.lock()->Get(), HWND(window.lock()->Get()), &desc, nullptr, nullptr, (IDXGISwapChain1**)swap.GetAddressOf());
 	_ASSERT(hr == S_OK);
 }
 
