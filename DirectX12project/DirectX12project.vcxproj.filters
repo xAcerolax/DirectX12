@@ -206,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader.hlsl">
-      <Filter>Graphics</Filter>
+      <Filter>リソース ファイル</Filter>
     </FxCompile>
     <FxCompile Include="Shader.hlsl">
       <Filter>リソース ファイル</Filter>

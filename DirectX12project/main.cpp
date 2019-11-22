@@ -7,7 +7,7 @@ int main()
 	int image = create::LoadImg("test.png");
 	float a = 0.0f;
 
-	while (create::CheckMsg)
+	while (create::CheckMsg())
 	{
 		create::Clear();
 		create::DrawImg(image, 0, create::Rad(a++));

@@ -15,7 +15,6 @@ void create::ShaderCompile(const std::string& fileName, const std::string& func,
 	auto hr = D3DCompileFromFile(path.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE, func.c_str(), ver.c_str(),
 		D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION, 0, *(&blob), nullptr);
 	_ASSERT(hr == S_OK);
-	
 }
 
 // .cso読み込み
@@ -94,7 +93,7 @@ void RootSignature::Compute(const std::string& fileName, const std::string& func
 void RootSignature::Vertex(const std::string& fileName)
 {
 	create::ShaderLoad(fileName, &vertex);
-	CreateRoot(vertex.Get());
+	//CreateRoot(vertex.Get());
 }
 
 // ジオメトリシェーダの.cso読み込み
@@ -119,14 +118,14 @@ void RootSignature::Compute(const std::string& fileName)
 // 頂点シェーダのリソース読み込み
 void RootSignature::Vertex(const int& id)
 {
-	create::ShaderRead(id, &vertex);
-	CreateRoot(vertex.Get());
+	/*create::ShaderRead(id, &vertex);
+	CreateRoot(vertex.Get());*/
 }
 
 // ジオメトリシェーダのリソース読み込み
 void RootSignature::Geometry(const int& id)
 {
-	create::ShaderRead(id, &geometry);
+	//create::ShaderRead(id, &geometry);
 }
 
 // ピクセルシェーダのリソース読み込み

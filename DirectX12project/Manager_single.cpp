@@ -56,13 +56,13 @@ void Manager::CreateRoot(const std::string& name, const std::initializer_list<T>
 			root[name]->Vertex(*itr);
 			++itr;
 
-			if (geoFlag == true)
+			/*if (geoFlag == true)
 			{
 				root[name]->Geometry(*itr);
 				++itr;
 			}
 			root[name]->Pixel(*itr);
-			++itr;
+			++itr;*/
 		}
 	}
 }
