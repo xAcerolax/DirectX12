@@ -25,7 +25,7 @@ MainLib::MainLib(const Vec2& size, const Vec2& pos, MainLib* parent) :
 // デストラクタ
 MainLib::~MainLib()
 {
-//	create::UnMap(rsc.Get());
+	create::UnMap(rsc.Get());
 }
 
 // 定数リソース生成

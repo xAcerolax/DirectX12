@@ -2,12 +2,12 @@
 #include "Device.h"
 #include "Func.h"
 #include <d3dcompiler.h>
-#pragma comment(lib, "d3dcompiler.lib")
 #include <d3d12.h>
-#pragma comment(lib, "d3d12.lib")
 #include <crtdbg.h>
 #include <functional>
 #include <unordered_map>
+
+
 // シェーダコンパイル
 void create::ShaderCompile(const std::string& fileName, const std::string& func, const std::string& ver, ID3DBlob** blob)
 {

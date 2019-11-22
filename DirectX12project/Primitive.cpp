@@ -102,6 +102,6 @@ void Primitive::Draw(void)
 
 	list.lock()->Get()->IASetVertexBuffers(0, 1, &desc);
 	list.lock()->Get()->SetDescriptorHeaps(1, heap.GetAddressOf());
-	list.lock()->SetGraphicstable(1, heap.Get());
+	list.lock()->SetGraphicsTable(1, heap.Get());
 	list.lock()->Get()->DrawInstanced(unsigned int(vertex.size()), 1, 0, 0);
 }

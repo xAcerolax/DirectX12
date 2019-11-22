@@ -64,6 +64,9 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{1178f64b-ad25-4aa3-8d5c-e97f123539f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Texture">
+      <UniqueIdentifier>{26559c78-9bee-4f61-bb75-e1621bf8f698}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Device.h">
@@ -126,6 +129,15 @@
     <ClInclude Include="Single.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TexLoader.h">
+      <Filter>Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="WICTextureLoader12.h">
+      <Filter>Graphics\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device.cpp">
@@ -164,9 +176,6 @@
     <ClCompile Include="Window.cpp">
       <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="Obj.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="RootSignature.cpp">
       <Filter>Graphics\RootSignature</Filter>
     </ClCompile>
@@ -182,5 +191,25 @@
     <ClCompile Include="Manager_class.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Manager_single.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TexLoader.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="WICTextureLoader12.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader.hlsl">
+      <Filter>Graphics</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -32,7 +32,7 @@ public:
 	void Barrier(ID3D12Resource* rsc);
 
 	//グラフィックルートテーブルセット
-	void SetGraphicstable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index = 0);
+	void SetGraphicsTable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index = 0);
 
 	//コンピュートルートテーブルセット
 	void SetComputeTable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index = 0);

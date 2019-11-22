@@ -79,7 +79,7 @@ void List::Barrier(ID3D12Resource* rsc)
 }
 
 // グラフィックルートテーブルセット
-void List::SetGraphicstable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index)
+void List::SetGraphicsTable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index)
 {
 	auto handle = heap->GetGPUDescriptorHandleForHeapStart();
 	handle.ptr += unsigned __int64(Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type) * index);

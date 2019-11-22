@@ -18,10 +18,10 @@ namespace create
 	int LoadImg(const std::string& fileName);
 
 	//画面クリア
-	void Crear(void);
+	void Clear(void);
 
 	//本来の画像サイズで描画
-	void DrawImg(const int& id, const Vec2& pos, const float& angle = 0.0f, const bool& turnX = false, const bool& trunY = false, const float& alpha = 1.0f);
+	void DrawImg(const int& id, const Vec2& pos, const float& angle = 0.0f, const bool& turnX = false, const bool& turnY = false, const float& alpha = 1.0f);
 
 	//描画した画像サイズで描画
 	void DrawImgRect(const int& id, const Vec2& pos, const Vec2& size, const float& angle = 0.0f,
@@ -29,7 +29,7 @@ namespace create
 
 	//指定した画像サイズで指定した矩形に分割して描画
 	void DrawImgDivide(const int& id, const Vec2& pos, const Vec2& size, const Vec2& uvPos, Vec2& uvSize,
-				       const float& angle = 0.0f, const bool& turnX = false, const float& trunY = false, const float& alpha = 1.0f);
+				       const float& angle = 0.0f, const bool& turnX = false, const float& turnY = false, const float& alpha = 1.0f);
 
 	//ポイント描画
 	void DrawPoint(const Vec2& pos, const float& r, const float& g, const float& b, const float& a = 1.0f);
@@ -44,7 +44,7 @@ namespace create
 	void DrawBox(const Vec2& pos, const Vec2& size, const float& r, const float& g, const float& b, const float& a = 1.0f);
 
 	//実行
-	void Excution(void);
+	void Execution(void);
 
 	//ターゲットにするライブラリを変える
 	void ChangeTargetName(const std::string& name);

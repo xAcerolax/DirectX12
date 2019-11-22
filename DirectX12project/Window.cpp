@@ -57,8 +57,8 @@ void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 	wnd.hIconSm = LoadIcon(GetModuleHandle(0), MAKEINTRESOURCE(AVICII));
 	wnd.hInstance = GetModuleHandle(0);
 	wnd.lpfnWndProc = WNDPROC(WindowProc);
-	wnd.lpszClassName = _T("‚¨‚©‚à‚ñ");
-	wnd.lpszMenuName = _T("‚¨‚©‚à‚ñ");
+	wnd.lpszClassName = _T("");
+	wnd.lpszMenuName = _T("");
 	wnd.style = CS_HREDRAW | CS_VREDRAW;
 	RegisterClassEx(&wnd);
 
@@ -69,7 +69,7 @@ void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 	rect.right = static_cast<long>(size.x);
 	AdjustWindowRect(&rect, flag, false);
 
-	handle = CreateWindowEx(WS_EX_ACCEPTFILES, wnd.lpszClassName, _T("‚¨‚©‚à‚ñ"), flag, pos.x, pos.y,
+	handle = CreateWindowEx(WS_EX_ACCEPTFILES, wnd.lpszClassName, _T(""), flag, pos.x, pos.y,
 		(rect.right - rect.left), (rect.bottom - rect.top), HWND(parent), nullptr, wnd.hInstance, nullptr);
 	_ASSERT(handle != nullptr);
 
