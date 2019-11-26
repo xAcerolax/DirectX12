@@ -16,47 +16,11 @@
     <Filter Include="Graphics">
       <UniqueIdentifier>{e0707c57-168e-47b4-a49e-521c7c03eead}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Descriptor">
-      <UniqueIdentifier>{1bd971e1-0abf-4e25-9459-30c69c094d26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vevtor">
-      <UniqueIdentifier>{e0eed66a-79a8-4239-b7f2-161c2cae2574}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Allocator">
-      <UniqueIdentifier>{cbd1b5f4-58a7-41d3-8b37-6cd6dec23541}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Device">
-      <UniqueIdentifier>{d35496eb-2c89-4d5c-9ca2-8dfb676ccf1e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\List">
-      <UniqueIdentifier>{b08764f7-5edf-47db-9e83-94dace1786f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Render">
-      <UniqueIdentifier>{490eeb02-71a4-4c99-9b91-63c252b2c7ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Queue">
-      <UniqueIdentifier>{a7156821-17ab-4cc4-88d8-442cd8ef6bf0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\SwapChain">
-      <UniqueIdentifier>{0197e046-18d1-433b-bc7c-76b41f85f1ef}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window">
       <UniqueIdentifier>{ec0f9136-988f-4061-b659-8dd53853253e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Func">
       <UniqueIdentifier>{7395d924-07cc-46c6-bc27-5c6784681161}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Pipeline">
-      <UniqueIdentifier>{28eace71-1da9-41b0-bb0e-837617160834}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Fence">
-      <UniqueIdentifier>{1b1c52e3-6a46-4561-aead-a9d5ef1645d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Primitive">
-      <UniqueIdentifier>{4f0e2491-4170-4931-ada7-feaa95588d85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\RootSignature">
-      <UniqueIdentifier>{3d9acfb0-45fa-495a-b983-923bc771a3be}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainLib">
       <UniqueIdentifier>{0e88d2c4-e6ef-41f0-b340-dcec311e320d}</UniqueIdentifier>
@@ -64,144 +28,171 @@
     <Filter Include="Manager">
       <UniqueIdentifier>{1178f64b-ad25-4aa3-8d5c-e97f123539f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\Allocator">
+      <UniqueIdentifier>{223a104d-8506-4d5d-bc72-0ee31ba6fa0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Descriptor">
+      <UniqueIdentifier>{f36c463a-2577-4e52-ab6f-1e17152fac5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Device">
+      <UniqueIdentifier>{b3e42301-4e4b-45c9-be70-2e89cf47f08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Fence">
+      <UniqueIdentifier>{9bc924bb-1373-400d-b26c-a57c4cd963e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Primitive">
+      <UniqueIdentifier>{4538ba32-3847-49b8-a93c-df56f3ea9eb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Queue">
+      <UniqueIdentifier>{6d9750ef-ac54-43c6-b165-bd9b9aca8f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Render">
+      <UniqueIdentifier>{c399177d-e7c7-4477-846c-b1b342b99784}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\List">
+      <UniqueIdentifier>{9aa8c86c-ba55-4986-bfad-cf93dbab3fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Pipeline">
+      <UniqueIdentifier>{206c4575-ed33-4b4f-94b0-29b52d33ec0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\RootSignature">
+      <UniqueIdentifier>{cbdc962e-6f73-4854-9ab6-e337d3759921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\SwapChain">
+      <UniqueIdentifier>{f855c98d-7c43-4a4a-887c-219255ee11b4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Graphics\Texture">
-      <UniqueIdentifier>{26559c78-9bee-4f61-bb75-e1621bf8f698}</UniqueIdentifier>
+      <UniqueIdentifier>{9d743df1-62f6-4754-9227-245f98ec5dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{e0eed66a-79a8-4239-b7f2-161c2cae2574}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Device.h">
-      <Filter>Graphics\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="SwapChain.h">
-      <Filter>Graphics\SwapChain</Filter>
-    </ClInclude>
-    <ClInclude Include="Render.h">
-      <Filter>Graphics\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="List.h">
-      <Filter>Graphics\List</Filter>
-    </ClInclude>
-    <ClInclude Include="Allocator.h">
-      <Filter>Graphics\Allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="Queue.h">
-      <Filter>Graphics\Queue</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Vevtor</Filter>
-    </ClInclude>
-    <ClInclude Include="RootSignature.h">
-      <Filter>Graphics\RootSignature</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Func.h">
-      <Filter>Func</Filter>
-    </ClInclude>
-    <ClInclude Include="Descriptor.h">
-      <Filter>Graphics\Descriptor</Filter>
-    </ClInclude>
-    <ClInclude Include="Pipeline.h">
-      <Filter>Graphics\Pipeline</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Window</Filter>
-    </ClInclude>
-    <ClInclude Include="Obj.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Fence.h">
-      <Filter>Graphics\Fence</Filter>
-    </ClInclude>
-    <ClInclude Include="Primitive.h">
-      <Filter>Graphics\Primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Vevtor</Filter>
-    </ClInclude>
-    <ClInclude Include="MainLib.h">
-      <Filter>MainLib</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
     <ClInclude Include="Single.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
+    <ClInclude Include="Graphics\Allocator\Allocator.h">
+      <Filter>Graphics\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Descriptor\Descriptor.h">
+      <Filter>Graphics\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Device\Device.h">
+      <Filter>Graphics\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Fence\Fence.h">
+      <Filter>Graphics\Fence</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Primitive\Primitive.h">
+      <Filter>Graphics\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Queue\Queue.h">
+      <Filter>Graphics\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Render\Render.h">
+      <Filter>Graphics\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\List\List.h">
+      <Filter>Graphics\List</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Pipeline\Pipeline.h">
+      <Filter>Graphics\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\RootSignature\RootSignature.h">
+      <Filter>Graphics\RootSignature</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\SwapChain\SwapChain.h">
+      <Filter>Graphics\SwapChain</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\Texture\TexLoader.h">
       <Filter>Graphics\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="TexLoader.h">
+    <ClInclude Include="Graphics\Texture\Texture.h">
       <Filter>Graphics\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="WICTextureLoader12.h">
+    <ClInclude Include="Graphics\Texture\WICTextureLoader12.h">
       <Filter>Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLib\MainLib.h">
+      <Filter>MainLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\Manager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vector2.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vector3.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Window\Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Func\Func.h">
+      <Filter>Func</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Device.cpp">
-      <Filter>Graphics\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="SwapChain.cpp">
-      <Filter>Graphics\SwapChain</Filter>
-    </ClCompile>
-    <ClCompile Include="Render.cpp">
-      <Filter>Graphics\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="List.cpp">
-      <Filter>Graphics\List</Filter>
-    </ClCompile>
-    <ClCompile Include="Allocator.cpp">
-      <Filter>Graphics\Allocator</Filter>
-    </ClCompile>
-    <ClCompile Include="Queue.cpp">
-      <Filter>Graphics\Queue</Filter>
-    </ClCompile>
-    <ClCompile Include="resource.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Func.cpp">
-      <Filter>Func</Filter>
+    <ClCompile Include="Graphics\Allocator\Allocator.cpp">
+      <Filter>Graphics\Allocator</Filter>
     </ClCompile>
-    <ClCompile Include="Descriptor.cpp">
+    <ClCompile Include="Graphics\Descriptor\Descriptor.cpp">
       <Filter>Graphics\Descriptor</Filter>
     </ClCompile>
-    <ClCompile Include="Pipeline.cpp">
-      <Filter>Graphics\Pipeline</Filter>
+    <ClCompile Include="Graphics\Device\Device.cpp">
+      <Filter>Graphics\Device</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
-    <ClCompile Include="RootSignature.cpp">
-      <Filter>Graphics\RootSignature</Filter>
-    </ClCompile>
-    <ClCompile Include="Fence.cpp">
+    <ClCompile Include="Graphics\Fence\Fence.cpp">
       <Filter>Graphics\Fence</Filter>
     </ClCompile>
-    <ClCompile Include="Primitive.cpp">
+    <ClCompile Include="Graphics\Primitive\Primitive.cpp">
       <Filter>Graphics\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="MainLib.cpp">
+    <ClCompile Include="Graphics\Queue\Queue.cpp">
+      <Filter>Graphics\Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Render\Render.cpp">
+      <Filter>Graphics\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\List\List.cpp">
+      <Filter>Graphics\List</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Pipeline\Pipeline.cpp">
+      <Filter>Graphics\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\RootSignature\RootSignature.cpp">
+      <Filter>Graphics\RootSignature</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\SwapChain\SwapChain.cpp">
+      <Filter>Graphics\SwapChain</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Texture\TexLoader.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Texture\Texture.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\Texture\WICTextureLoader12.cpp">
+      <Filter>Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLib\MainLib.cpp">
       <Filter>MainLib</Filter>
     </ClCompile>
-    <ClCompile Include="Manager_class.cpp">
+    <ClCompile Include="Manager\Manager_class.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Manager_single.cpp">
+    <ClCompile Include="Manager\Manager_single.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Graphics\Texture</Filter>
+    <ClCompile Include="Window\Window.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
-    <ClCompile Include="TexLoader.cpp">
-      <Filter>Graphics\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="WICTextureLoader12.cpp">
-      <Filter>Graphics\Texture</Filter>
+    <ClCompile Include="Func\Func.cpp">
+      <Filter>Func</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

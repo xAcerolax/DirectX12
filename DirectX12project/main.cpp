@@ -1,4 +1,4 @@
-#include "MainLib.h"
+#include "../DirectX12project/MainLib/MainLib.h"
 
 int main()
 {
