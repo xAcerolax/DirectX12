@@ -46,7 +46,7 @@ void MainLib::CreateRsc(void)
 
 	create::CreateRsc(&rsc, prop, desc, nullptr, D3D12_RESOURCE_STATES::D3D12_RESOURCE_STATE_GENERIC_READ);
 	//create::CBV(rsc.Get(), heap.Get());
-	//create::Map(rsc.Get(), (void**)&data);
+	create::Map(rsc.Get(), (void**)&data);
 
 	data->x = float(GetWindowSize().x);
 	data->y = float(GetWindowSize().y);

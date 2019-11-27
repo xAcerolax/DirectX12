@@ -1,6 +1,7 @@
 #pragma once
 #include <wrl.h>
 #include <string>
+#include <d3dcommon.h>
 
 struct ID3D12RootSignature;
 struct ID3D10Blob;

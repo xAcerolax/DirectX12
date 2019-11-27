@@ -67,6 +67,9 @@
     <Filter Include="Vector">
       <UniqueIdentifier>{e0eed66a-79a8-4239-b7f2-161c2cae2574}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Compute">
+      <UniqueIdentifier>{ea69a6df-0ae5-457a-a671-cf4f3c6fd8ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Single.h">
@@ -132,6 +135,9 @@
     <ClInclude Include="Func\Func.h">
       <Filter>Func</Filter>
     </ClInclude>
+    <ClInclude Include="Compute.h">
+      <Filter>Compute</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -194,12 +200,17 @@
     <ClCompile Include="Func\Func.cpp">
       <Filter>Func</Filter>
     </ClCompile>
+    <ClCompile Include="Compute.cpp">
+      <Filter>Compute</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader.hlsl">
+    <None Include="Header.hlsli">
       <Filter>リソース ファイル</Filter>
-    </FxCompile>
-    <FxCompile Include="Shader.hlsl">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
       <Filter>リソース ファイル</Filter>
     </FxCompile>
   </ItemGroup>

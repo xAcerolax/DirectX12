@@ -1,5 +1,5 @@
 #include "Manager.h"
-#include "..//Graphics/List/List.h"
+#include "../Graphics/List/List.h"
 #include "../Graphics/RootSignature/RootSignature.h"
 #include "../Graphics/Pipeline/Pipeline.h"
 #include "../Graphics/Texture/Texture.h"
@@ -27,6 +27,7 @@ Manager::Manager() :
 	target("メイン")
 {
 #ifdef  _DEBUG
+	//デバッグレイヤーオン
 	Microsoft::WRL::ComPtr<ID3D12Debug>debug = nullptr;
 	D3D12GetDebugInterface(IID_PPV_ARGS(&debug));
 	debug->EnableDebugLayer();
@@ -52,7 +53,7 @@ void Manager::CreateRoot(const std::string& name, const std::initializer_list<T>
 
 		while (itr != id.end())
 		{
-			root[name]->Vertex("Shader/Shader.hlsl", "Shader", "fx_5_1");
+			root[name]->Vertex("VertexShader.hlsl", "main", "vs_5_1");
 			++itr;
 		}
 	}
@@ -84,10 +85,10 @@ void Manager::Init(void)
 	CreateRoot("tex", {TexVertex}, true);
 	CreatePipe("tex", root["tex"], { 0,1 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
 
-	CreateRoot("prim", { PrimVertex, PrimPixel });
-	CreatePipe("point",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT);
-	CreatePipe("line",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
-	CreatePipe("triangle",	root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE);
+	//CreateRoot("prim", { PrimVertex, PrimPixel });
+	//CreatePipe("point",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT);
+	//CreatePipe("line",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
+	//CreatePipe("triangle",	root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE);
 }
 
 //初期化

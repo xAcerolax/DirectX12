@@ -3,6 +3,7 @@
 #include <d3d12.h>
 #include <crtdbg.h>
 
+
 Allocator::Allocator(const D3D12_COMMAND_LIST_TYPE& type) :
 	allo(nullptr)
 {
