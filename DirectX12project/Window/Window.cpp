@@ -6,7 +6,7 @@
 
 // コンストラクタ
 Window::Window(const Vec2& pos, const Vec2& size, void* parent) :
-	handle(nullptr), instance(nullptr)
+	handle(nullptr), instance(nullptr), name(nullptr)
 {
 	CreateWnd(pos, size, parent);
 }
@@ -47,6 +47,7 @@ long __stdcall Window::WindowProc(void* hWnd, unsigned int message, unsigned int
 	return DefWindowProc(HWND(hWnd), message, wParam, lParam);
 }
 
+// ウィンドウ生成
 void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 {
 	WNDCLASSEX wnd{};
@@ -57,8 +58,8 @@ void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 	wnd.hIconSm = LoadIcon(GetModuleHandle(0), MAKEINTRESOURCE(AVICII));
 	wnd.hInstance = GetModuleHandle(0);
 	wnd.lpfnWndProc = WNDPROC(WindowProc);
-	wnd.lpszClassName = _T("");
-	wnd.lpszMenuName = _T("");
+	wnd.lpszClassName = _T("A");
+	wnd.lpszMenuName = _T("A");
 	wnd.style = CS_HREDRAW | CS_VREDRAW;
 	RegisterClassEx(&wnd);
 
@@ -69,7 +70,7 @@ void Window::CreateWnd(const Vec2& pos, const Vec2& size, void* parent)
 	rect.right = static_cast<long>(size.x);
 	AdjustWindowRect(&rect, flag, false);
 
-	handle = CreateWindowEx(WS_EX_ACCEPTFILES, wnd.lpszClassName, _T(""), flag, pos.x, pos.y,
+	handle = CreateWindowEx(WS_EX_ACCEPTFILES, wnd.lpszClassName, _T("A"), flag, pos.x, pos.y,
 		(rect.right - rect.left), (rect.bottom - rect.top), HWND(parent), nullptr, wnd.hInstance, nullptr);
 	_ASSERT(handle != nullptr);
 

@@ -5,10 +5,10 @@
 #include <crtdbg.h>
 
 // コンストラクタ
-Pipeline::Pipeline(std::weak_ptr<RootSignature>root, const D3D12_INPUT_ELEMENT_DESC& input, const size_t& num, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth) :
+Pipeline::Pipeline(std::weak_ptr<RootSignature>root, const D3D12_INPUT_ELEMENT_DESC& inputs, const size_t& num, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth) :
 	pipe(nullptr)
 {
-	CreatePipeline(root, input, num, type, depth);
+	CreatePipeline(root, inputs, num, type, depth);
 }
 
 // コンストラクタ
@@ -30,7 +30,6 @@ void Pipeline::CreatePipeline(std::weak_ptr<RootSignature> root, const D3D12_INP
 	rasterizer.DepthClipEnable = true;
 	rasterizer.FillMode = D3D12_FILL_MODE::D3D12_FILL_MODE_SOLID;
 
-
 	D3D12_RENDER_TARGET_BLEND_DESC renderBlend{};
 	renderBlend.BlendEnable = true;
 	renderBlend.BlendOp = D3D12_BLEND_OP::D3D12_BLEND_OP_ADD;
@@ -42,13 +41,11 @@ void Pipeline::CreatePipeline(std::weak_ptr<RootSignature> root, const D3D12_INP
 	renderBlend.SrcBlend = D3D12_BLEND::D3D12_BLEND_SRC_ALPHA;
 	renderBlend.SrcBlendAlpha = D3D12_BLEND::D3D12_BLEND_ONE;
 
-
 	D3D12_BLEND_DESC blend{};
 	for (int i = 0; i < 2; ++i)
 	{
 		blend.RenderTarget[i] = renderBlend;
 	}
-
 
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC desc{};
 	desc.BlendState = blend;
@@ -67,19 +64,17 @@ void Pipeline::CreatePipeline(std::weak_ptr<RootSignature> root, const D3D12_INP
 	desc.DepthStencilState.BackFace.StencilPassOp = D3D12_STENCIL_OP::D3D12_STENCIL_OP_DECR;
 	desc.DepthStencilState.BackFace.StencilFunc = D3D12_COMPARISON_FUNC::D3D12_COMPARISON_FUNC_ALWAYS;
 	desc.DSVFormat = DXGI_FORMAT::DXGI_FORMAT_D32_FLOAT;
-
-	if (root.lock()->GetGeometry() != nullptr)
+	/*if (root.lock()->GetGeometry() != nullptr)
 	{
 		desc.GS.pShaderBytecode = root.lock()->GetGeometry()->GetBufferPointer();
 		desc.GS.BytecodeLength = root.lock()->GetGeometry()->GetBufferSize();
-	}
-
+	}*/
 	desc.InputLayout = { &input, static_cast<unsigned int>(num) };
 	desc.NumRenderTargets = 1;
 	desc.PrimitiveTopologyType = type;
 	desc.pRootSignature = root.lock()->Get();
-	desc.PS.pShaderBytecode = root.lock()->GetPixel()->GetBufferPointer();
-	desc.PS.BytecodeLength = root.lock()->GetPixel()->GetBufferSize();
+	//desc.PS.pShaderBytecode = root.lock()->GetPixel()->GetBufferPointer();
+	//desc.PS.BytecodeLength = root.lock()->GetPixel()->GetBufferSize();
 	desc.RasterizerState = rasterizer;
 	desc.RTVFormats[0] = DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM;
 	desc.SampleMask = UINT_MAX;
@@ -102,7 +97,6 @@ void Pipeline::Create(std::weak_ptr<RootSignature> root)
 	auto hr = Device::Get().Dev()->CreateComputePipelineState(&desc, IID_PPV_ARGS(&pipe));
 	_ASSERT(hr == S_OK);
 }
-
 
 ID3D12PipelineState* Pipeline::Get(void) const
 {

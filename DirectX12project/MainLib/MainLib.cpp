@@ -33,7 +33,7 @@ bool create::CheckMsg(void)
 		DispatchMessage(&msg);
 	}
 
-	return false;
+	return true;
 }
 
 //‰æ‘œ“Ç‚İ‚İ

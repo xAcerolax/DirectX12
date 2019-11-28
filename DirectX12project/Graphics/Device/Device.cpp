@@ -1,9 +1,9 @@
 #include "Device.h"
 #include <d3d12.h>
-#pragma comment(lib, "d3d12.lib")
 #include <dxgi1_6.h>
-#pragma comment(lib, "dxgi.lib")
 #include <crtdbg.h>
+
+
 // 機能レベル一覧
 const D3D_FEATURE_LEVEL level[] = {
 	D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_12_1,
@@ -55,7 +55,7 @@ void Device::CreateDevice(void)
 	//最終的なアダプターをセットする
 	hr = factory->EnumAdapters1(index, &adap);
 
-	for (auto& i : level)
+	for (const D3D_FEATURE_LEVEL& i : level)
 	{
 		if (SUCCEEDED(D3D12CreateDevice(adap.Get(), i, IID_PPV_ARGS(&device))))
 		{
@@ -73,8 +73,9 @@ void Device::CreateDevice(void)
 	}
 }
 
+
 // デバイス取得
-ID3D12Device5* Device::Dev(void) const
+ID3D12Device* Device::Dev(void) const
 {
 	return device.Get();
 }

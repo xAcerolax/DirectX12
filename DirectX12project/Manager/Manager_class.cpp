@@ -16,8 +16,8 @@
 MainLib::MainLib(const Vec2& size, const Vec2& pos, MainLib* parent) :
 	allo(SwapChain::bufferCnt)
 {
-	void* temp = (parent == nullptr) ? nullptr : parent->window->Get();
-	window = std::make_shared<Window>(pos, size, temp);
+	void* tmp = (parent == nullptr) ? nullptr : parent->window->Get();
+	window = std::make_shared<Window>(pos, size, tmp);
 
 	Init();
 }
@@ -35,7 +35,6 @@ void MainLib::CreateRsc(void)
 	prop.Type = D3D12_HEAP_TYPE::D3D12_HEAP_TYPE_UPLOAD;
 
 	D3D12_RESOURCE_DESC desc{};
-
 	desc.DepthOrArraySize = 1;
 	desc.Dimension = D3D12_RESOURCE_DIMENSION::D3D12_RESOURCE_DIMENSION_BUFFER;
 	desc.Height = 1;

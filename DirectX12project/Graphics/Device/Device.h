@@ -5,7 +5,7 @@
 //デバイスの生成
 //--------------------------------
 
-struct ID3D12Device5;
+struct ID3D12Device;
 struct IDXGIFactory1;
 
 class Device
@@ -20,7 +20,7 @@ public:
 	}
 
 	//デバイスの取得
-	ID3D12Device5* Dev(void) const;
+	ID3D12Device* Dev(void) const;
 private:
 	Device();
 	Device(const Device&) = delete;
@@ -31,6 +31,6 @@ private:
 
 
 	// デバイス
-	Microsoft::WRL::ComPtr<ID3D12Device5>device;
+	Microsoft::WRL::ComPtr<ID3D12Device>device;
 };
 

@@ -4,7 +4,8 @@
 #include "../../Func/Func.h"
 #include <d3d12.h>
 
-// コンストラクタ
+
+/// コンストラクタ
 TexLoader::TexLoader()
 {
 }

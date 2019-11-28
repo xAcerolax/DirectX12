@@ -4,8 +4,8 @@
 #include <memory>
 
 enum D3D12_COMMAND_LIST_TYPE : int;
-enum D3D12_RESOURCE_STATES : int;
-struct ID3D12GraphicsCommandList5;
+enum D3D12_RESOURCE_STATES	 : int;
+struct ID3D12GraphicsCommandList;
 struct ID3D12DescriptorHeap;
 struct ID3D12Resource;
 class Allocator;
@@ -38,7 +38,8 @@ public:
 	void SetComputeTable(const unsigned int& id, ID3D12DescriptorHeap* heap, const size_t& index = 0);
 
 	// コマンドリスト取得
-	ID3D12GraphicsCommandList5* Get(void) const;
+	ID3D12GraphicsCommandList* Get(void) const;
+
 
 private:
 	//コマンドリスト生成
@@ -48,6 +49,6 @@ private:
 	//アロケータ
 	std::weak_ptr<Allocator>allo;
 	//コマンドリスト
-	Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList5>list;
+	Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList>list;
 };
 

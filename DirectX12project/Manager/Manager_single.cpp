@@ -8,6 +8,7 @@
 #include "../resource/resource.h"
 #include <d3d12.h>
 
+
 // インプット一覧
 const D3D12_INPUT_ELEMENT_DESC inputs[] = {
 	//0
@@ -60,14 +61,14 @@ void Manager::CreateRoot(const std::string& name, const std::initializer_list<T>
 }
 template void Manager::CreateRoot(const std::string&, const std::initializer_list<std::string>&, const bool&);
 
-//パイプ生成
-void Manager::CreatePipe(const std::string& name, std::weak_ptr<RootSignature>root, const std::initializer_list<unsigned char>& index
-	, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth)
+
+// パイプ生成
+void Manager::CreatePipe(const std::string& name, std::weak_ptr<RootSignature>root, const std::initializer_list<unsigned char>& index,
+	const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth)
 {
 	if (pipe.find(name) == pipe.end())
 	{
-		std::vector<D3D12_INPUT_ELEMENT_DESC> input;
-
+		std::vector<D3D12_INPUT_ELEMENT_DESC>input;
 		for (const unsigned char& i : index)
 		{
 			input.push_back(inputs[i]);
@@ -76,19 +77,20 @@ void Manager::CreatePipe(const std::string& name, std::weak_ptr<RootSignature>ro
 	}
 }
 
+
 //初期化
 void Manager::Init(void)
 {
 	auto hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	_ASSERT(hr == S_OK);
 
-	CreateRoot("tex", {TexVertex}, true);
-	CreatePipe("tex", root["tex"], { 0,1 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
+	CreateRoot("tex", { TexVertex, TexGeometry, TexPixel }, true);
+	CreatePipe("tex", root["tex"], { 0, 1 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
 
 	//CreateRoot("prim", { PrimVertex, PrimPixel });
-	//CreatePipe("point",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT);
-	//CreatePipe("line",		root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
-	//CreatePipe("triangle",	root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE);
+	//CreatePipe("point", root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_POINT);
+	//CreatePipe("line", root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_LINE);
+	//CreatePipe("triangle", root["prim"], { 0 }, D3D12_PRIMITIVE_TOPOLOGY_TYPE::D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE);
 }
 
 //初期化

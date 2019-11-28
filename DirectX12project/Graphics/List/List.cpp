@@ -97,7 +97,7 @@ void List::SetComputeTable(const unsigned int& id, ID3D12DescriptorHeap* heap, c
 }
 
 //コマンドリスト取得
-ID3D12GraphicsCommandList5* List::Get(void) const
+ID3D12GraphicsCommandList* List::Get(void) const
 {
 	return list.Get();
 }

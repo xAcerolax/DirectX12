@@ -13,7 +13,7 @@ class Pipeline
 {
 public:
 	// コンストラクタ
-	Pipeline(std::weak_ptr<RootSignature>root, const D3D12_INPUT_ELEMENT_DESC& input, const size_t& num, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth);
+	Pipeline(std::weak_ptr<RootSignature>root, const D3D12_INPUT_ELEMENT_DESC& inputs, const size_t& num, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth);
 	Pipeline(std::weak_ptr<RootSignature>root);
 	// デストラクタ
 	~Pipeline();

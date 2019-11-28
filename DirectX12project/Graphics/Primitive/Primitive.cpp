@@ -69,19 +69,19 @@ void Primitive::CreateCRsc(void)
 //ƒ|ƒCƒ“ƒg•`‰æ
 void Primitive::DrawPoint(const Vec2f & pos, const create::Color & color)
 {
-	//vertex[0] = pos;
+	vertex[0] = pos;
 
-	//void* data = nullptr;
+	void* data = nullptr;
 
 }
 
 void Primitive::DrawLine(const Vec2f & pos1, const Vec2f & pos2, const create::Color & color)
-{/*
+{
 	vertex[0] = pos1;
 	vertex[1] = pos2;
 
 	void* data = nullptr;
-*/
+
 }
 
 void Primitive::DrawTriangle(const Vec2f & pos1, const Vec2f & pos2, const Vec2f & pos3, const create::Color & color)

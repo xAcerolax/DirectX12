@@ -40,9 +40,10 @@ void create::RTV(ID3D12Resource* rsc, ID3D12DescriptorHeap* heap, const size_t& 
 
 	//ヒープ開始
 	auto handle = heap->GetCPUDescriptorHandleForHeapStart();
-	handle.ptr = Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type) * index;
+	handle.ptr += Device::Get().Dev()->GetDescriptorHandleIncrementSize(heap->GetDesc().Type) * index;
 
 	Device::Get().Dev()->CreateRenderTargetView(rsc, &desc, handle);
+
 }
 
 // マップ

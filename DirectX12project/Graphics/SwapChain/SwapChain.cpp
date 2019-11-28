@@ -8,7 +8,7 @@
 unsigned int SwapChain::bufferCnt = 3;
 
 // コンストラクタ
-SwapChain::SwapChain(std::weak_ptr<Window>win, std::weak_ptr<Queue>queue) :
+SwapChain::SwapChain(std::weak_ptr<Window>window, std::weak_ptr<Queue>queue) :
 	window(window), queue(queue), swap(nullptr)
 {
 	CreateSwap();
@@ -26,6 +26,7 @@ void SwapChain::CreateSwap(void)
 	auto hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
 	_ASSERT(hr == S_OK);
 
+
 	//ウィンドウサイズ
 	RECT winSize{};
 	GetClientRect(HWND(window.lock()->Get()), &winSize);
@@ -36,11 +37,12 @@ void SwapChain::CreateSwap(void)
 	desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	desc.Format = DXGI_FORMAT::DXGI_FORMAT_R8G8B8A8_UNORM;
 	desc.Height = winSize.bottom;
+	desc.Width = winSize.right;
 	desc.SampleDesc = { 1, 0 };
 	desc.Scaling = DXGI_SCALING::DXGI_SCALING_STRETCH;
 	desc.Stereo = false;
 	desc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;
-	desc.Width = winSize.right;
+	
 
 	hr = factory->CreateSwapChainForHwnd((IUnknown*)queue.lock()->Get(), HWND(window.lock()->Get()), &desc, nullptr, nullptr, (IDXGISwapChain1**)swap.GetAddressOf());
 	_ASSERT(hr == S_OK);
