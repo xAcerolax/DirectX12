@@ -27,13 +27,16 @@ Device::~Device()
 // デバイス生成
 void Device::CreateDevice(void)
 {
-	Microsoft::WRL::ComPtr<IDXGIFactory7>factory = nullptr;
-	auto hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
+	//※
+	Microsoft::WRL::ComPtr<IDXGIFactory1>factory = nullptr;
+	auto hr = CreateDXGIFactory1(IID_PPV_ARGS(&factory));
 	_ASSERT(hr == S_OK);
+
 
 	Microsoft::WRL::ComPtr<IDXGIAdapter1>adap = nullptr;
 	unsigned int revision = 0;
 	unsigned int index = 0;
+
 	for (unsigned int i = 0; factory->EnumAdapters1(i, &adap) != DXGI_ERROR_NOT_FOUND; ++i)
 	{
 		DXGI_ADAPTER_DESC1 desc{};
@@ -64,13 +67,13 @@ void Device::CreateDevice(void)
 	}
 	_ASSERT(hr == S_OK);
 
-	D3D12_FEATURE_DATA_D3D12_OPTIONS5 option{};
-	hr = device->CheckFeatureSupport(D3D12_FEATURE::D3D12_FEATURE_D3D12_OPTIONS5, &option, sizeof(option));
+	D3D12_FEATURE_DATA_D3D12_OPTIONS3 option{};
+	hr = device->CheckFeatureSupport(D3D12_FEATURE::D3D12_FEATURE_D3D12_OPTIONS3, &option, sizeof(option));
 	_ASSERT(hr == S_OK);
-	if (option.RaytracingTier == D3D12_RAYTRACING_TIER_NOT_SUPPORTED)
-	{
-		OutputDebugStringA("\nDirectX Raytracing is not supported\n");
-	}
+	//if (option.RaytracingTier == D3D12_RAYTRACING_TIER_NOT_SUPPORTED)
+	//{
+	//	OutputDebugStringA("\nDirectX Raytracing is not supported\n");
+	//}
 }
 
 

@@ -22,7 +22,8 @@ SwapChain::~SwapChain()
 // スワップチェインの生成
 void SwapChain::CreateSwap(void)
 {
-	Microsoft::WRL::ComPtr<IDXGIFactory7>factory = nullptr;
+	//※
+	Microsoft::WRL::ComPtr<IDXGIFactory2>factory = nullptr;
 	auto hr = CreateDXGIFactory(IID_PPV_ARGS(&factory));
 	_ASSERT(hr == S_OK);
 

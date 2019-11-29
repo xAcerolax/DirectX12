@@ -82,7 +82,7 @@ void Texture::Init(void)
 void Texture::Load(const std::string& fileName)
 {
 	TexLoader::Get().Load(fileName);
-	//create::SRV(TexLoader::Get().Rsc(fileName), heap.Get(), index++);
+	//create::RTV(TexLoader::Get().Rsc(fileName), heap.Get(), index++);
 
 	constant->size = TexLoader::Get().GetSize(fileName);
 }

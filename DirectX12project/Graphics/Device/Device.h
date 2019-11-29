@@ -1,4 +1,5 @@
 #pragma once
+#include "../../Single.h"
 #include <wrl.h>
 
 //--------------------------------
@@ -8,23 +9,31 @@
 struct ID3D12Device;
 struct IDXGIFactory1;
 
-class Device
+class Device :
+	public Single<Device>
 {
+	friend Single<Device>;
 public:
-	~Device();
+	
 
-	static Device& Get(void)
-	{
-		static Device instance;
-		return instance;
-	}
+	//static Device& Get(void)
+	//{
+	//	static Device instance;
+	//	return instance;
+	//}
 
 	//デバイスの取得
 	ID3D12Device* Dev(void) const;
+
+
 private:
+	//コンストラクタ
 	Device();
-	Device(const Device&) = delete;
-	void operator=(const Device&) = delete;
+	//デストラクタ
+	~Device();
+
+	/*Device(const Device&) = delete;
+	void operator=(const Device&) = delete;*/
 
 	// デバイス生成
 	void CreateDevice(void);

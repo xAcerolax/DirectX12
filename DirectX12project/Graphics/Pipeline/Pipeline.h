@@ -21,10 +21,12 @@ public:
 	// パイプライン取得
 	ID3D12PipelineState* Get(void) const;
 
+
 private:
 	// パイプライン生成
 	void CreatePipeline(std::weak_ptr<RootSignature>root, const D3D12_INPUT_ELEMENT_DESC& input, const size_t& num, const D3D12_PRIMITIVE_TOPOLOGY_TYPE& type, const bool& depth);
 	void Create(std::weak_ptr<RootSignature>root);
+
 
 	// パイプライン
 	Microsoft::WRL::ComPtr<ID3D12PipelineState>pipe;

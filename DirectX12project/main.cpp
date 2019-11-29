@@ -4,7 +4,7 @@ int main()
 {
 	create::Init(640);
 
-	int image = create::LoadImg("test.png");
+	int image = create::LoadImg("../Test.png");
 	float a = 0.0f;
 
 	while (create::CheckMsg())
