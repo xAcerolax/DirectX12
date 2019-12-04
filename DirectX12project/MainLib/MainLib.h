@@ -6,7 +6,7 @@
 namespace create
 {
 	//初期化
-	bool Init(const Vec2& windowSize, const Vec2& windowPos = 0x8000000, const std::string& parent = "");
+	bool Init(const Vec2& windowSize, const Vec2& windowPos, const std::string& parent = "");
 
 	//メッセージ確認
 	bool CheckMsg(void);

@@ -2,7 +2,7 @@
 
 int main()
 {
-	create::Init(640);
+	create::Init(640, 0);
 
 	int image = create::LoadImg("../Test.png");
 	float a = 0.0f;
