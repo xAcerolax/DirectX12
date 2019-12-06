@@ -67,13 +67,15 @@ void Device::CreateDevice(void)
 	}
 	_ASSERT(hr == S_OK);
 
+	//Å¶
 	D3D12_FEATURE_DATA_D3D12_OPTIONS3 option{};
 	hr = device->CheckFeatureSupport(D3D12_FEATURE::D3D12_FEATURE_D3D12_OPTIONS3, &option, sizeof(option));
 	_ASSERT(hr == S_OK);
-	//if (option.RaytracingTier == D3D12_RAYTRACING_TIER_NOT_SUPPORTED)
-	//{
-	//	OutputDebugStringA("\nDirectX Raytracing is not supported\n");
-	//}
+	//Å¶
+	/*if (option.RaytracingTier == D3D12_RAYTRACING_TIER_NOT_SUPPORTED)
+	{
+		OutputDebugStringA("\nDirectX Raytracing is not supported\n");
+	}*/
 }
 
 

@@ -54,15 +54,17 @@ void MainLib::CreateRsc(void)
 // èâä˙âª
 void MainLib::Init(void)
 {
-	create::CreateHeap(&heap, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
-		D3D12_DESCRIPTOR_HEAP_FLAGS::D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE);
+	//Å¶
+	create::CreateHeap(&heap, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_RTV,
+		D3D12_DESCRIPTOR_HEAP_FLAGS::D3D12_DESCRIPTOR_HEAP_FLAG_NONE);
 	CreateRsc();
-
 	queue = std::make_shared<Queue>(D3D12_COMMAND_LIST_TYPE::D3D12_COMMAND_LIST_TYPE_DIRECT);
+
 	for (auto& i : allo)
 	{
 		i = std::make_shared<Allocator>(D3D12_COMMAND_LIST_TYPE::D3D12_COMMAND_LIST_TYPE_DIRECT);
 	}
+
 	list = std::make_shared<List>(allo[0], D3D12_COMMAND_LIST_TYPE::D3D12_COMMAND_LIST_TYPE_DIRECT);
 	fence = std::make_shared<Fence>(queue);
 	swap = std::make_shared<SwapChain>(window, queue);
@@ -100,7 +102,8 @@ void MainLib::Execution(void)
 	auto hr = list->Get()->Close();
 	_ASSERT(hr == S_OK);
 
-	ID3D12CommandList* com[] = {
+	ID3D12CommandList* com[] = 
+	{
 		list->Get()
 	};
 

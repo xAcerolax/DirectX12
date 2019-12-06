@@ -70,8 +70,9 @@ void Texture::CreateCRsc(void)
 // 初期化
 void Texture::Init(void)
 {
-	create::CreateHeap(heap.GetAddressOf(), D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
-		D3D12_DESCRIPTOR_HEAP_FLAGS::D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE, 2);
+	//※
+	create::CreateHeap(heap.GetAddressOf(), D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_RTV,
+		D3D12_DESCRIPTOR_HEAP_FLAGS::D3D12_DESCRIPTOR_HEAP_FLAG_NONE, 2);
 	vertex.resize(4);
 
 	CreateVRsc();
@@ -82,7 +83,7 @@ void Texture::Init(void)
 void Texture::Load(const std::string& fileName)
 {
 	TexLoader::Get().Load(fileName);
-	//create::RTV(TexLoader::Get().Rsc(fileName), heap.Get(), index++);
+	create::RTV(TexLoader::Get().Rsc(fileName), heap.Get(), index++);
 
 	constant->size = TexLoader::Get().GetSize(fileName);
 }
@@ -90,10 +91,10 @@ void Texture::Load(const std::string& fileName)
 // 本来のサイズで描画
 void Texture::DrawImg(const Vec2f& pos, const float& angle, const bool& turnX, const bool& turnY, const float& alpha)
 {
-	vertex[0] = { pos,                                      0.0f };
+	vertex[0] = { pos, 0.0f };
 	vertex[1] = { Vec2f(pos.x + constant->size.x, pos.y), { constant->size.x, 0.0f } };
 	vertex[2] = { Vec2f(pos.x, pos.y + constant->size.y), { 0.0f, constant->size.y } };
-	vertex[3] = { pos + constant->size,                     constant->size };
+	vertex[3] = { pos + constant->size, constant->size };
 	memcpy(data, vertex.data(), sizeof(vertex[0]) * vertex.size());
 
 	constant->reverse.x = (turnX == true) ? 1.0f : 0.0f;
@@ -105,10 +106,10 @@ void Texture::DrawImg(const Vec2f& pos, const float& angle, const bool& turnX, c
 // 指定したサイズで描画
 void Texture::DrawRect(const Vec2f& pos, const Vec2f& size, const float& angle, const bool& turnX, const bool& turnY, const float& alpha)
 {
-	vertex[0] = { pos,                            0.0f };
+	vertex[0] = { pos, 0.0f };
 	vertex[1] = { Vec2f(pos.x + size.x, pos.y), { constant->size.x, 0.0f } };
 	vertex[2] = { Vec2f(pos.x, pos.y + size.y), { 0.0f, constant->size.y } };
-	vertex[3] = { pos + size,                     constant->size };
+	vertex[3] = { pos + size, constant->size };
 	memcpy(data, vertex.data(), sizeof(vertex[0]) * vertex.size());
 
 	constant->reverse.x = (turnX == true) ? 1.0f : 0.0f;
@@ -121,10 +122,10 @@ void Texture::DrawRect(const Vec2f& pos, const Vec2f& size, const float& angle, 
 void Texture::DrawDivide(const Vec2f& pos, const Vec2f& size, const Vec2f& uvPos, const Vec2f& uvSize,
 	const float& angle, const bool& turnX, const bool& turnY, const float& alpha)
 {
-	vertex[0] = { pos,                            uvPos };
+	vertex[0] = { pos, uvPos };
 	vertex[1] = { Vec2f(pos.x + size.x, pos.y), { uvPos.x + uvSize.x, uvPos.y } };
 	vertex[2] = { Vec2f(pos.x, pos.y + size.y), { uvPos.x,            uvPos.y + uvSize.y } };
-	vertex[3] = { pos + size,                     uvPos + uvSize };
+	vertex[3] = { pos + size, uvPos + uvSize };
 	memcpy(data, vertex.data(), sizeof(vertex[0]) * vertex.size());
 
 	constant->reverse.x = (turnX == true) ? 1.0f : 0.0f;
@@ -140,8 +141,8 @@ void Texture::Draw(std::weak_ptr<List> list)
 	desc.BufferLocation = vRsc->GetGPUVirtualAddress();
 	desc.SizeInBytes = unsigned int(vRsc->GetDesc().Width);
 	desc.StrideInBytes = sizeof(vertex[0]);
-	list.lock()->Get()->IASetVertexBuffers(0, 1, &desc);
 
+	list.lock()->Get()->IASetVertexBuffers(0, 1, &desc);
 	list.lock()->Get()->SetDescriptorHeaps(1, heap.GetAddressOf());
 
 	for (unsigned char i = cRsc.index; i < index; ++i)
@@ -150,6 +151,5 @@ void Texture::Draw(std::weak_ptr<List> list)
 	}
 
 	list.lock()->Get()->IASetPrimitiveTopology(D3D12_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ);
-
 	list.lock()->Get()->DrawInstanced(unsigned int(vertex.size()), 1, 0, 0);
 }

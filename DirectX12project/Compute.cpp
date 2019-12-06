@@ -36,7 +36,8 @@ void Compute::Compile(const std::string& fileName, const std::string& func, cons
 //ÉqÅ[Évê∂ê¨
 void Compute::CreateHeap(const size_t& num)
 {
-	create::CreateHeap(&heap, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV
+	//Å¶
+	create::CreateHeap(&heap, D3D12_DESCRIPTOR_HEAP_TYPE::D3D12_DESCRIPTOR_HEAP_TYPE_RTV
 						, D3D12_DESCRIPTOR_HEAP_FLAGS::D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE, num);
 
 	rsc.resize(num);
